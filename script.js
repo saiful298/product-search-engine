@@ -6,31 +6,32 @@ const searchPhone = () => {
 
     fetch(url)
         .then(res => res.json())
-        .then(data => displaySearchResult(data.data));
+        .then(dataList => displaySearchResult(dataList.data));
 }
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
     data.forEach(slug => {
-        console.log(slug);
+        // console.log(slug);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-            <div onclick="loadSlugDetail(${slug.slug})" class="card h-100">
+            <div  class="card h-100">
                 <img src="${slug.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                 <h3 class="card-title">${slug.phone_name}</h3>
                 <h6>Brand: ${slug.brand}</h6>
-                <button  >Details</button>
+                <button onclick="loadMobileDetail('${slug.slug}')" >Details</button>
                  </div>
             </div>
         `;
         searchResult.appendChild(div);
     })
 }
-const loadSlugDetail = slug => {
-    const url = `https://openapi.programming-hero.com/api/phone/${slug}`;
+const loadMobileDetail = slugId => {
+    // console.log(slugId)
+    const url = `https://openapi.programming-hero.com/api/phone/${slugId}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => console.log(data.data));
+        .then(dataList => displaMobileDetail(dataList.data));
 }
