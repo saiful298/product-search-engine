@@ -35,7 +35,6 @@ const loadMobileDetail = slugId => {
         .then(res => res.json())
         .then(dataList => allMobileDetail(dataList.data));
 }
-
 const allMobileDetail = slug => {
     console.log(slug);
     const mobileDetails = document.getElementById('mobile-details');
