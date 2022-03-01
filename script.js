@@ -21,13 +21,13 @@ const displaySearchResult = data => {
     }
     else {
         error.innerText = ``
-        data.forEach(slug => {
+        data.forEach((slug, index) => {
             // console.log(slug);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-                <div  class="card h-100">
-                    <img src="${slug.image}" class="card-img-top" alt="...">
+                <div  class="card h-50">
+                    <img src="${slug.image}" class="card-img-top " alt="...">
                     <div class="card-body">
                     <h3 class="card-title">${slug.phone_name}</h3>
                     <h6>Brand: ${slug.brand}</h6>
@@ -36,7 +36,9 @@ const displaySearchResult = data => {
                 </div>
             `;
             searchResult.appendChild(div);
-
+            if (index == 19) {
+                _break();
+            }
         })
     }
 
@@ -59,7 +61,9 @@ const allMobileDetail = slug => {
     <img src="${slug.image}" class="card-img-top" alt="...">
       <div class="card-body">
         <h3 class="card-title">${slug.name}</h3>
-        <p>${slug.releaseDate}</p>
+
+        //====>>> I used The conditional (ternary) operato <=====
+        <p>${!slug.releaseDate ? "no date" : slug.releaseDate}</p>
         <h6>WLAN= ${slug.others.WLAN}</h6>
         <h6>Radio= ${slug.others.Radio}</h6>
         <h6>USB= ${slug.others.USB}</h6>
