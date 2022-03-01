@@ -61,8 +61,6 @@ const allMobileDetail = slug => {
     <img src="${slug.image}" class="card-img-top" alt="...">
       <div class="card-body">
         <h3 class="card-title">${slug.name}</h3>
-
-        //====>>> I used The conditional (ternary) operato <=====
         <p>${!slug.releaseDate ? "no date" : slug.releaseDate}</p>
         <h6>WLAN= ${slug.others.WLAN}</h6>
         <h6>Radio= ${slug.others.Radio}</h6>
@@ -80,7 +78,7 @@ const allMobileDetail = slug => {
         <h6>Storage= ${slug.storage}</h6>
         <h6>Bluetooth= ${slug.others.Bluetooth}</h6>
         <h6>Display Size= ${slug.mainFeatures.displaySize}</h6>
-      </div>
+      </div >
     `;
     mobileDetails.appendChild(div);
 }
